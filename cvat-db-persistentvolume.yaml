@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  namespace: cvat      
+  labels:
+    app: cvatk8s-db
+    app.kubernetes.io/name: postgresql
+  name: cvatk8s-db
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  hostPath:
+    path: "/tmp/cvat-db"
